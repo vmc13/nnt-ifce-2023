@@ -26,58 +26,58 @@ class EmployeeManager {
     }
     
     func addEmployee() {
-        print("Enter employee name:")
+        print("\nInsira o nome do funcionário:")
         let name = readLine() ?? ""
         
-        print("Enter employee position:")
+        print("Insira o cargo do funcionário:")
         let position = readLine() ?? ""
         
-        print("Enter employee salary:")
+        print("Insira o salário do funcionário:")
         let salaryString = readLine() ?? ""
         if let salary = Double(salaryString) {
             let employee = Employee(name: name, position: position, salary: salary)
             employees.append(employee)
             saveEmployees()
-            print("Employee added successfully!")
+            print("\u{2705} Funcionário adicionado com sucesso!!\n")
         } else {
-            print("Invalid salary!")
+            print("\u{274C} Salário inválido!\n")
         }
     }
     
     func listEmployees() {
         if employees.isEmpty {
-            print("No employees found!")
+            print("\n\u{274C} Nenhum funcionário encontrado!\n")
         } else {
-            print("Employees:")
+            print("\n\u{1F9D1} Funcionários:")
             for employee in employees {
-                print("Name: \(employee.name)")
-                print("Position: \(employee.position)")
-                print("Salary: \(employee.salary)\n")
+                print("Nome: \(employee.name)")
+                print("Cargo: \(employee.position)")
+                print("Salário: R$\(employee.salary)\n")
             }
         }
     }
     
     func deleteEmployee() {
-        print("Enter the name of the employee to delete:")
+        print("\nInsira o nome do funcionário que deseja excluir:")
         let name = readLine() ?? ""
         
         if let index = employees.firstIndex(where: { $0.name == name }) {
             employees.remove(at: index)
             saveEmployees()
-            print("Employee deleted successfully!")
+            print("\u{2705} Funcionário deletado com sucesso!\n")
         } else {
-            print("Employee not found!")
+            print("\u{274C} Funcionário não encontrado!\n")
         }
     }
 }
 
 func showMenu() {
-    print("Menu:")
-    print("1. Add Employee")
-    print("2. List Employees")
-    print("3. Delete Employee")
-    print("4. Quit")
-    print("Enter your choice:")
+    print("\u{1F4CB} Menu:")
+    print("1. Adicionar funcionário")
+    print("2. Listar funcionários")
+    print("3. Excluir funcionário")
+    print("4. Sair\n")
+    print("\u{1F4CD} Insira uma opção", terminator: ": ")
 }
 
 let employeeManager = EmployeeManager()
@@ -98,9 +98,9 @@ while !shouldQuit {
         case 4:
             shouldQuit = true
         default:
-            print("Invalid choice!")
+            print("\n\u{274C} Opção inválida!\n")
         }
     } else {
-        print("Invalid input!")
+        print("\n\u{274C} Entrada inválida!\n")
     }
 }
